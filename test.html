@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Scankin</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="./css/styles.css" rel="stylesheet" />
+    <link href="./css/css.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+
+    <style>
+        #loading {
+            z-index: 1;
+            padding: 10px 10px 5px;
+            background: rgb(255, 0, 136);
+            left: 0;
+            top: 0;
+            color: #fff;
+            position: fixed;
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            box-shadow: 2px 2px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <h2 class="title-h2">請上傳需辨識部位</h2>
+    <img class="" id="uploadImg" style="" />
+    <label class="btn btn-blue col-lg-6 col-sm-12" id="uploadBtn">
+        <input type="file" id="file" style="display:none;" class="" />
+        <i class="fas fa-upload"></i> &nbsp; Upload File
+        <!-- -->
+    </label>
+    <label class="btn btn-blue col-lg-6 col-sm-12" id="cameraBtn">
+        <input type="button" id="camera" capture="camera" style="display:none;" class="" />
+        <i class="fas fa-camera"></i> &nbsp; Camera
+        <!-- 相機問題尚未解決 -->
+    </label><br>
+    <label class="btn btn-danger col-lg-6 col-sm-12" id="nextBtn">
+        <input type="button" id="" style="display:none;" class="" />
+        <i class="fas fa-play"></i> &nbsp; NEXT
+    </label><br>
+    </div>
+    <div id="demo">000</div>
+    <div id='loading'>正在載入頁面資料...</div>
+    <script>
+        var result = "";
+        document.querySelector('#file').onchange = function () {
+            if (this.files.length) {
+                let file = this.files[0];
+                result = file.name;
+                let reader = new FileReader();
+                //新建 FileReader 对象
+                reader.onload = function () {
+                    // 当 FileReader 读取文件时候，读取的结果会放在 FileReader.result 属性中
+                    document.querySelector('#uploadImg').src = this.result;
+                    // document.querySelector('#text').innerHTML = this.result;
+                };
+                // 设置以什么方式读取文件，这里以base64方式
+                reader.readAsDataURL(file);
+            }
+            var words = result.split("");
+            console.log(words[1]);
+            if (words[1] == "1") {
+                alert("01");
+            }
+            if (words[1] == "2") {
+                alert("02");
+            }
+            if (words[1] == "3") {
+                alert("03");
+            }
+            // else {
+            //     alert("wrong");
+            // }
+            // $("#demo").html(result);
+        }
+        $(window).load(function () {
+            $('#loading').hide(1000);
+        });
+
+    </script>
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- <script src="js/upload.js"></script> -->
+</body>
+
+</html>
